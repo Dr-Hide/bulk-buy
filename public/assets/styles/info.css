@@ -1,0 +1,9 @@
+.alt-item {
+	margin: 1rem .5rem;
+	padding: .5rem .75rem;
+	border: 1px solid var(--mainpink);
+}
+
+.alt-item h5 {
+	color: var(--mainpink);
+}

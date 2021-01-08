@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<!-- specific scripts/styles -->
+<link href="/assets/styles/login.css" rel="stylesheet">
+
+<%- include('partials/topnav') %>
+<%- include('partials/sidenav') %>
+
+	<div class="page-content">
+		<div class="login-window rounded column shadow">
+			<h2>Login</h2>
+			<form class="column" action="test_user" onsubmit="return validateForm()" method="POST">
+				<h4>Username</h4>
+				<input class="rounded sorter-light" type="username" onclick="removeBorder(0)" name="username">
+				<h4>Password</h4>
+				<input class="rounded sorter-light" type="password" onclick="removeBorder(1)" name="password">
+				<p class="rounded"></p>
+				<div id="button-container" class="row space-between">
+					<a href="/signup"><input class="rounded button-light" type="button" value="Sign Up" href=""></input></a>
+					<button class="rounded button-light">Login</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	
+<%- include('partials/footer') %>

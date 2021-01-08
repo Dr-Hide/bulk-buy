@@ -1,0 +1,178 @@
+<%- include('partials/header') %>
+
+<!-- specific scripts/styles -->
+<link href="/assets/styles/userprofile.css" rel="stylesheet">
+<script src="/assets/js/userprofile.js"></script>
+
+<%- include('partials/topnav') %>
+<%- include('partials/sidenav') %>
+
+	<!-- page content -->
+	<div class="page-content">
+		<h2>My Profile</h2>
+
+		<div id="info-container" class="row center space-between">
+			<div id="orders" class="column space-between info-hidden">
+				<h2>Orders</h2>
+				<h4><%= user.name %></h4>
+				<h4><%= '#' + user.userId %></h4>
+				<h4>12 deliveries</h4>
+				<h4><%= user.location %></h4>
+				<span class="rating">
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star-half-alt"></i>
+					<span>(10)</span>
+				</span>
+			</div>
+
+			<div id="bg-circle">
+				<div id="fg-circle" class="column center">
+					<i id="center-icon" class="fas fa-user" onclick="toggleInfoView()"></i>
+				</div>
+			</div>
+
+			<div id="deliveries" class="column space-between">
+				<h2>Deliveries</h2>
+				<h4><%= user.name %></h4>
+				<h4><%= '#' + user.userId %></h4>
+				<h4>12 deliveries</h4>
+				<h4><%= user.location %></h4>
+				<span class="rating">
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star-half-alt"></i>
+					<span>(10)</span>
+				</span>
+			</div>
+		</div>
+
+		<div id="toggle-container">
+			<div id="toggle" class="center toggle-left" onclick="toggleView()">
+				<div id="ball" class="ball-left"></div>
+			</div>
+		</div>
+
+		<div id="carousel">
+			<div class="row space-between">
+
+				<div id="item-container-0" class="column item-container">
+					<div class="row space-between center even-spaced">
+						<h3>You Ordered:</h3>
+						<a href="/order"><button id="order-user" class="rounded button-dark">Make an Order</button></a>
+					</div>
+
+					<% if (orders.length == 0) { %>
+						<h4 style="margin-left: 1rem">You have no active orders</h4>
+					<% } %>
+
+					<% for (let i = 0; i < orders.length; i++) { %>
+						<div <%= `id=${orders[i].orderId}` %> class=" item row container-dark container">
+							<div class="column space-around container">
+								<div class="item-content">
+
+									<% if (orders[i].status != "completed") { %>
+										<h3><%= `${orders[i].buyerUsername}` %></h3>
+										<h4>items: <%= orders[i].items.length %></h4>
+										<%let date = orders[i].deliveryDate %>
+										<h4> deliver by:<%=` ${pad(date.getDate(), 2)}/${pad(date.getMonth() + 1, 2)}/${date.getYear() + 1900}` %></h4>
+										<h4>payment option: <%= orders[i].paymentOption %></h4>
+									<% } else {%>
+										<div class="row space-between center">
+											<h3><%= `${orders[i].buyerUsername}` %></h3>
+											<h4>order delivered
+												<i class="fas fa-check check" onclick="dismiss(<%= orders[i].orderId %>)"></i>
+											</h4>
+										</div>									
+									<% }%>									
+								</div>
+
+								<div id="requests-<%=i%>-0" class="items items-hidden">
+									<h3>Items</h3>
+									<div class="item-list">
+										<% orders[i].items.forEach(order => {%>
+											<h4><%= `${order.quantity}x` %></h4>
+											<h4><%= order.item %></h4>
+											<h4><%= `R${order.unitPrice}` %></h4>
+										<%}); %>
+									</div>
+									<hr>
+									<div class="row space-between">
+										<% let total = 0;%>
+										<% orders[i].items.forEach(order => {%>
+											<% total += (order.quantity * order.unitPrice) %>
+										<% }); %>
+										<h3>Total:</h3>
+										<h3>R<%= total %></h3>
+									</div>
+								</div>
+							</div>
+
+							<div class="column space-between">
+								<i id="plus-<%=i%>-0" class="fas fa-plus cross" onclick="cancelMyOrder(<%= orders[i].orderId %>)"></i>
+								<i id="down-<%=i%>-0" class="fas fa-chevron-down down" onclick="toggleExpandItem(<%=i%>, 0)"></i>
+							</div>
+						</div>
+					<% } %>
+				</div>
+
+				<div id="item-container-1" class="column item-container">
+					<div class="row space-between center even-spaced">
+						<h3>You Must Deliver:</h3>
+					</div>
+
+					<% if (deliveries.length == 0) { %>
+						<h4 style="margin-left: 1rem">You have no active deliveries</h4>
+					<% } %>
+
+					<% for (let i = 0; i < deliveries.length; i++) { %>
+						<div <%= `id=${deliveries[i].orderId}` %> class=" item row container-dark container">
+							<div class="column space-around container">
+								<div class="item-content">
+									<h3><%= `${deliveries[i].buyerUsername}` %></h3>
+									<h4>items: <%= deliveries[i].items.length %></h4>
+									<%let date = deliveries[i].deliveryDate %>
+									<h4> deliver by:<%=` ${pad(date.getDate(), 2)}/${pad(date.getMonth() + 1, 2)}/${date.getYear() + 1900}` %></h4>
+									<h4>payment option: <%= deliveries[i].paymentOption %></h4>
+								</div>
+
+								<div id="requests-<%=i%>-1" class="items items-hidden">
+									<h3>Items</h3>
+									<div class="item-list">
+										<% deliveries[i].items.forEach(order => {%>
+											<h4><%= `${order.quantity}x` %></h4>
+											<h4><%= order.item %></h4>
+											<h4><%= `R${order.unitPrice}` %></h4>
+										<%}); %>
+									</div>
+									<hr>
+									<div class="row space-between">
+										<% let total = 0;%>
+										<% deliveries[i].items.forEach(order => {%>
+											<% total += (order.quantity * order.unitPrice) %>
+										<% }); %>
+										<h3>Total:</h3>
+										<h3>R<%= total %></h3>
+									</div>
+								</div>
+							</div>
+
+							<div class="column space-between">
+								<i id="plus-<%=i%>-1" class="fas fa-plus cross" onclick="cancelMyDelivery(<%=deliveries[i].orderId%>)"></i>
+								<i id="check-<%=i%>" class="fas fa-check check" onclick="finishOrder(<%=deliveries[i].orderId%>)"></i>
+								<i id="down-<%=i%>-1" class="fas fa-chevron-down down" onclick="toggleExpandItem(<%=i%>, 1)"></i>
+							</div>
+						</div>
+					<% } %>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+<%- include('partials/contact') %>
+<%- include('partials/footer') %>

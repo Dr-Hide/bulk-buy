@@ -1,0 +1,52 @@
+h2 {
+	color: black;
+	text-align: center;
+}
+
+h4 {
+	color: black;
+	margin-top: .5rem;
+}
+
+p {
+	padding: .5rem;
+	display: none;
+	background: rgba(255, 255, 255, 0.1);
+}
+
+/*login window*/
+
+.login-window {
+	width: 16rem;
+	margin: 5rem calc(50vw - 9.5rem);
+	background: rgb(252,9,255);
+	background: linear-gradient(130deg, rgba(252,9,255,1) 0%, rgba(4,224,227,1) 100%);
+	padding: 1rem;
+}
+
+.sorter-light {
+	height: 1rem;
+	width: 15rem;
+	border: 2px solid transparent;
+}
+
+
+#button-container {
+	margin-top: 1.5rem;
+}
+
+.button-light {
+	width: 6rem;
+}
+
+.red-border {
+	border: 2px solid red;
+}
+
+@media (min-width: 1501px) {
+
+	.page-content {
+		padding-left: 0rem;
+		transition: padding .4s;
+	}
+}

@@ -1,0 +1,104 @@
+<%- include('partials/header') %>
+
+<!-- specific scripts/styles -->
+<link href="/assets/styles/order.css" rel="stylesheet">
+
+<%- include('partials/topnav') %>
+<%- include('partials/sidenav') %>
+
+	
+
+	<!-- page content -->
+
+	<div class="page-content">
+		<h2>User Profile</h2>
+
+		<div id="info-container" class="row center space-between">
+			<div id="orders" class="column space-between info-hidden">
+				<h2>Orders</h2>
+				<h4><%= user.name %></h4>
+				<h4>#1568456</h4>
+				<h4>12 deliveries</h4>
+				<h4>Potch</h4>
+				<span class="rating">
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star-half-alt"></i>
+					<span>(10)</span>
+				</span>
+			</div>
+
+			<div id="bg-circle">
+				<div id="fg-circle" class="column center">
+					<i id="center-icon" class="fas fa-user" onclick="toggleInfoView()"></i>
+				</div>
+			</div>
+
+			<div id="deliveries" class="column space-between">
+				<h2>Deliveries</h2>
+				<h4>Rolf</h4>
+				<h4>#1568456</h4>
+				<h4>12 deliveries</h4>
+				<h4>Potch</h4>
+				<span class="rating">
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star-half-alt"></i>
+					<span>(10)</span>
+				</span>
+			</div>
+		</div>
+
+		<div id="button-container">
+			<div class="row space-between">
+				<button id="contact-user" class="rounded shadow button-dark">Contact</button>
+				<a href="/order"><button id="order-user" class="rounded shadow button-dark">Make an Order</button></a>
+			</div>
+		</div>
+
+		<h3>You Ordered:</h3>
+
+		<div id="item-container" class>
+
+			<% for (let i = 0; i < 5; i++) { %>
+				<div id="item-<%=i%>" class="row space-between item shadow rounded">
+					<div class="column space-around">
+						<h3>Dian Ferreira</h3>
+						<h4>items</h4>
+						<h4>deliver by</h4>
+						<h4>payment option</h4>
+						<h4>R150</h4>
+
+						<div id="requests-<%=i%>" class="items-show items-hidden">
+							<h3>Items</h3>
+							<h4>Eggs</h4>
+							<h4>Eggs</h4>
+							<h4>Eggs</h4>
+							<h4>Eggs</h4>
+							<h4>Eggs</h4>
+							<h4>Eggs</h4>
+							<h4>Eggs</h4>
+							<h4>Eggs</h4>
+							<hr>
+							<div class="row space-between rounded">
+								<h3>Total:</h3>
+								<h3>R100,00</h3>
+							</div>
+						</div>
+					</div>
+
+					<div class="column space-between">
+						<i id="plus-<%=i%>" class="fas fa-plus cross" onclick="cancelItem(<%=i%>)"></i>
+						<i id="down-<%=i%>" class="fas fa-chevron-down down" onclick="toggleExpandItem(<%=i%>)"></i>
+					</div>
+				</div>
+			<% } %>
+		</div>
+	</div>
+
+<%- include('partials/contact') %>
+<%- include('partials/footer') %>

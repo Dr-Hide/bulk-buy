@@ -1,0 +1,43 @@
+.sorter {
+	width: 10rem;
+}
+
+.sort-show {
+	z-index: 1;
+	visibility: visible;
+	opacity: 1;
+	height: calc(3rem * 1.5);
+	transition: height .1s, visibility 0s, opacity .1s;
+}
+
+.sort-hide {
+	visibility: hidden;
+	opacity: 0;
+	height: 0;
+	transition: height .1s, visibility 0s .1s, opacity .1s .1s;
+}
+
+.sort-show h4 {
+	color: gray;
+	transition: color .1s .2s;
+}
+
+.sort-hide h4 {
+	color: transparent;
+	transition: color: 1s;
+}
+
+.rating-container {
+	display: flex;
+	flex-direction: row;
+}
+
+/*items list displayed*/
+#item-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.rating {
+	margin: 0 1rem;
+}

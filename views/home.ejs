@@ -1,0 +1,96 @@
+<%- include('partials/header') %>
+
+<!-- specific scripts/styles -->
+<link href="/assets/styles/home.css" rel="stylesheet">
+<script>var deliveries = <%- JSON.stringify(deliveries) %></script>
+<script src="/assets/js/home.js"></script>
+
+<%- include('partials/topnav') %>
+<%- include('partials/sidenav') %>
+
+	<!-- page content -->
+	<div class="page-content">
+		<h2>Home</h2>
+
+		<div class="container row space-between">
+
+			<div class="container-dark sorter row space-between">
+				<h4>Location</h4>
+				<i id="location-down" class="fas fa-chevron-down down" onclick="toggleSort('location')"></i>
+				<div id="location-content" class="sort-hide container-dark drop-dark">
+					<h4>Potch</h4>
+					<h4>Pretoria</h4>
+					<h4>Secunda</h4>
+				</div>
+			</div>
+
+			<div class="container-dark sorter row space-between">
+				<h4>Sort By</h4>
+				<i id="sort-down" class="fas fa-chevron-down down"  onclick="toggleSort('sort')"></i>
+				<div id="sort-content" class="sort-hide container-dark drop-dark">
+					<h4>Rating</h4>
+					<h4>Location</h4>
+					<h4>Number of Items</h4>
+				</div>
+			</div>
+		</div>
+
+		<div id="item-container">
+			<% for (let i = 0; i < orders.length; i++) { %>
+				<div id="item-<%=i%>" class="item row container-dark container">
+					<div class="column container">
+						<div class="rating-container">
+							<h3><%= `${orders[i].buyerUsername}` %></h3>
+							<div class="rating">
+								<% let count = orders[i].rating; %>
+								<% for (let j = 0; j < 5; j++) {%>
+									<% if (Math.round(count * 2)/2 >= 1) {%>
+										<i class="fas fa-star"></i>
+									<%} else if (Math.round(count * 2)/2 >= 0.5) {%>
+										<i class="fas fa-star-half-alt"></i>
+									<%} else {%>
+										<i class="far fa-star"></i>
+									<% } %>
+									<%count -= 1%>
+								<% } %>								
+								<!-- <span>(10)</span> -->
+							</div>
+						</div>
+						<div class="description">
+							<h4><%= orders[i].items.length + " " %> items</h4>
+							<%let date = orders[i].deliveryDate %>
+							<h4> deliver by:<%=` ${pad(date.getDate(), 2)}/${pad(date.getMonth() + 1, 2)}/${date.getYear() + 1900}` %></h4>
+						</div>
+
+						<div id="requests-<%=i%>" class="items items-hidden">
+							<h3>Items</h3>
+							<div class="item-list">
+								<% orders[i].items.forEach(order => {%>
+									<h4><%= `${order.quantity}x` %></h4>
+									<h4><%= order.item %></h4>
+									<h4><%= `R${order.unitPrice}` %></h4>
+								<%}); %>
+							</div>
+							<hr>
+							<div class="row space-between rounded">
+								<% let total = 0;%>
+								<% orders[i].items.forEach(order => {%>
+									<% total += (order.quantity * order.unitPrice) %>
+								<% }); %>
+								<h3>Total:</h3>
+								<h3>R<%= total %></h3>
+							</div>
+						</div>
+					</div>
+
+					<div class="column space-between">
+						<i id="plus-<%= orders[i].orderId %>" class="fas fa-plus plus" onclick="toggleAppendItem(<%= orders[i].orderId %>, <%= JSON.stringify(curUser) %>)"></i>
+						<i id="down-<%=i%>" class="fas fa-chevron-down down" onclick="toggleExpandItem(<%=i%>)"></i>
+					</div>
+				</div>
+			<% } %>
+		</div>
+	</div>
+
+<%- include('partials/contact') %>
+<%- include('partials/footer') %>

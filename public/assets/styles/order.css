@@ -1,0 +1,114 @@
+#bg-circle {
+	position: absolute;
+	left: calc(50vw - 7.5rem);
+	background: linear-gradient(90deg, rgba(4,224,227,1) 0%, rgba(252,9,255,0.5) 75%, rgba(252,9,255,0.1) 100%);
+	padding: 1rem;
+	border-radius: 13rem;
+	width: 13rem;
+	height: 13rem;
+	margin-left: 0;
+	transition: transform 1s, margin .3s;
+}
+
+#fg-circle {
+	background-color: var(--bg);
+	border-radius: 13rem;
+	z-index: 0;
+	width: 13rem;
+	height: 13em;
+	box-shadow: 0 0 8px #000000;
+	transition: transform 1s;
+}
+
+#center-icon {
+	z-index: 1;
+	font-size: 5rem;
+	margin: 4rem 0;
+	left: calc(50vw - 2.5rem * 7/8);
+	top: 15rem;
+	color: var(--purple);
+	transition: color .2s;
+}
+
+#center-icon:hover {
+	font-size: 5rem;
+	color: var(--darkblue);
+	cursor: pointer;
+	transition: color .2s;
+}
+
+.rotate {
+	transform: rotate(180deg);
+	transition: transform 1s;
+}
+
+.rotate-anti {
+	transform: rotate(-180deg);
+	transition: transform 1s;
+}
+
+/*info*/
+
+#info-container {
+	margin: 2rem 0;
+}
+
+#info-container h4, .rating {
+	margin-left: .5rem;
+}
+
+#info-container h2 {
+	margin-top: 0;
+}
+
+#orders, #deliveries {
+	z-index: 1;
+	margin: 0 2rem;
+	color: gray;
+	height: 14rem;
+	transition: opacity 1s;
+}
+
+.info-hidden {
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 1s;
+}
+
+/*buttons*/
+
+.button-dark {
+	width: 10rem;
+}
+
+.rating-container {
+	display: flex;
+	flex-direction: row;
+}
+
+/*items list displayed*/
+#item-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.rating {
+	margin: 0 1rem;
+}
+
+.items-show {
+	margin: 1rem 0 0 0;
+	line-height: 1.5rem;
+	visibility: visible;
+	height: calc(1.5rem * 10 + 1rem);
+	opacity: 1;
+	transition: height .5s, visibility .5s, opacity .5s .2s;
+}
+
+.items-hidden {
+	margin: 0;
+	visibility: hidden;
+	height: 0;
+	opacity: 0;
+	transition: height .5s, opacity .2s, visibility .1s, margin .2s;
+}

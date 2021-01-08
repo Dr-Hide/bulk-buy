@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+
+<!-- specific scripts/styles -->
+<link href="/assets/styles/makeorder.css" rel="stylesheet">
+<script type="text/javascript"> var optionsArray = <%- JSON.stringify(randomWordArray) %></script>
+<script src="/assets/js/order.js"></script>
+
+<%- include('partials/topnav') %>
+<%- include('partials/sidenav') %>
+
+	<!-- counter template -->
+	<template id="counter-template">
+		<div class="gray-border space-between">
+			<i id="minus" class="fas fa-minus"></i>
+			<h4 id="quantity">1</h4>
+			<i id="plus" class="fas fa-plus"></i>
+		</div>
+	</template>
+
+	<!-- page content -->
+
+	<div class="login-window rounded shadow">
+		<h2>Order</h2>
+		<h3 id="item-tag">Pick Item</h3>
+		<input id="item-type" class="container-light container" type="text" name="" oninput="createItems()" placeholder="search...">
+		<div id="dropdown" class="container-light container"></div>
+		<h3 id="item-list">Item List:</h3>
+		<div id="items" class="column container-light container"></div>
+		<h3 id="total">Total:</h3>
+
+		<a id="cancel" href="/"><button class="button-light">Cancel</button></a>
+		<button id="post" class="button-light" onclick="post()">Post Order</button>
+	</div>
+<%- include('partials/footer') %>

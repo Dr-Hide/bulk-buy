@@ -1,0 +1,65 @@
+<%- include('partials/header') %>
+
+<!-- specific scripts/styles -->
+<link href="/assets/styles/couriers.css" rel="stylesheet">
+
+<%- include('partials/topnav') %>
+<%- include('partials/sidenav') %>
+
+
+	<!-- page content -->
+	<div class="page-content" class="column">
+		<h2>Couriers</h2>
+
+		<div class="container row space-between">
+
+			<div class="container-dark sorter row space-between">
+				<h4>Location</h4>
+				<i id="location-down" class="fas fa-chevron-down down" onclick="toggleSort('location')"></i>
+				<div id="location-content" class="sort-hide container-dark drop-dark">
+					<h4>Potch</h4>
+					<h4>Pretoria</h4>
+					<h4>Secunda</h4>
+				</div>
+			</div>
+
+			<div class="container-dark sorter row space-between">
+				<h4>Sort By</h4>
+				<i id="sort-down" class="fas fa-chevron-down down"  onclick="toggleSort('sort')"></i>
+				<div id="sort-content" class="sort-hide container-dark drop-dark">
+					<h4>Rating</h4>
+					<h4>Location</h4>
+					<h4>Number of Items</h4>
+				</div>
+			</div>
+		</div>
+
+		<div id="item-container">
+			<% for (let i = 0; i < 15; i++) { %>
+				<div id="item-<%=i%>" class="row space-between container container-dark">
+					<div class="column space-between">
+						<div class="row">
+							<h3>Dian Ferreira</h3>
+							<div class="rating">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star-half-alt"></i>
+								<span>(10)</span>
+							</div>		
+						</div>
+						<h4>Secunda</h4>
+						<h4>#2646df5</h4>
+					</div>
+
+					<div class="row center">
+						<a href="couriers/userprofile"><button id="order-button-<%=i%>" class="rounded button-dark">Order</button></a>
+					</div>
+				</div>
+			<% } %>
+		</div>
+	</div>
+	
+<%- include('partials/contact') %>
+<%- include('partials/footer') %>

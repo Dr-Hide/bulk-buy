@@ -1,0 +1,272 @@
+#bg-circle {
+	position: absolute;
+	left: calc(50vw - 7.5rem);
+	background: linear-gradient(90deg, rgba(4,224,227,1) 0%, rgba(252,9,255,0.5) 75%, rgba(252,9,255,0.1) 100%);
+	padding: 1rem;
+	border-radius: 13rem;
+	width: 13rem;
+	height: 13rem;
+	margin-left: 0;
+	transition: transform 1s, margin .3s;
+}
+
+#fg-circle {
+	background-color: var(--bg);
+	border-radius: 13rem;
+	z-index: 0;
+	width: 13rem;
+	height: 13em;
+	box-shadow: 0 0 8px #000000;
+	transition: transform 1s;
+}
+
+#center-icon {
+	z-index: 1;
+	font-size: 5rem;
+	margin: 4rem 0;
+	left: calc(50vw - 2.5rem * 7/8);
+	top: 15rem;
+	color: var(--purple);
+	transition: color .2s;
+}
+
+#center-icon:hover {
+	font-size: 5rem;
+	color: var(--darkblue);
+	cursor: pointer;
+	transition: color .2s;
+}
+
+.rotate {
+	transform: rotate(180deg);
+	transition: transform 1s;
+}
+
+.rotate-anti {
+	transform: rotate(-180deg);
+	transition: transform 1s;
+}
+
+/*info*/
+
+#info-container {
+	margin-top: 2rem;
+}
+
+#info-container h4, .rating {
+	margin-left: .5rem;
+}
+
+#info-container h2 {
+	margin-top: 0;
+}
+
+#orders, #deliveries {
+	z-index: 1;
+	margin: 0 2rem;
+	color: gray;
+	height: 14rem;
+	transition: opacity 1s;
+}
+
+.info-hidden {
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 1s;
+}
+
+/*items*/
+
+#item-container-0, #item-container-1 {
+	width: calc(100vw - .5rem);
+	margin-top: 2rem;
+}
+
+#item-container-0 {
+	margin-right: .5rem;
+}
+
+#item-container-1 {
+	margin-left: .5rem;
+}
+
+/*carousel*/
+
+#carousel {
+	width: calc(100vw - 1rem);
+	transition: transform .5s ease-in-out, width .4s;
+}
+
+.toggle-view {
+	transform: translateX(-100vw);
+	transition: transform .5s ease-in-out;
+}
+
+/*carousel toggle*/
+
+#toggle-container {
+	display: grid;
+	grid-template-columns: auto 3rem auto;
+	opacity: 1;
+	visibility: visible;
+	transition: opacity .3s .1s, visibility 0s;
+	margin-top: 2rem;
+}
+
+#toggle {
+	grid-column-start: 2;
+	height: 1.5rem;
+	width: 3rem;
+	border-radius: 2rem;
+	transition: .2s;
+}
+
+#ball {
+	position: absolute;
+	height: 1.2rem;
+	width: 1.2rem;
+	border-radius: 1.2rem;
+	background: var(--bg);
+	margin: 0 .2rem;
+}
+
+#toggle:hover, #ball:hover {
+	cursor: pointer;
+}
+
+.toggle-left {
+	background: var(--mainpink);
+	transition: .2s;
+}
+
+.toggle-right {
+	background: var(--mainblue);
+	transition: .2s;
+}
+
+.ball-left {
+	transition: .2s;
+}
+
+.ball-right {
+	transform: translateX(1.4rem);
+	transition: .2s;
+}
+
+/*buttons*/
+
+#order-user {
+	width: 10rem;
+}
+
+#total-container-0, #total-container-1 {
+	margin: .5rem;
+	margin-top: 2rem;
+	padding: 1rem;
+	color: gray;
+	border: 1px solid var(--mainpink);
+}
+
+.empty {
+	margin-left: 1rem;
+	display: none;
+}
+
+.even-spaced {
+	height: 3rem;
+}
+
+@media (max-width: 480px) {
+	#carousel {
+		width: calc(200vw - 1rem);
+		transition: transform .5s ease-in-out, width .3s;
+	}
+}
+
+@media (min-width: 481px) and (max-width: 550px) {
+	#carousel {
+		width: calc(200vw - 1rem);
+		transition: transform .5s ease-in-out, width .3s;
+	}
+}
+
+@media (min-width: 551px) and (max-width: 768px) {
+	#carousel {
+		width: calc(200vw - 8rem);
+		transition: transform .5s ease-in-out, width .4s;
+	}
+
+	#item-container-0 {
+		margin-right: 4rem;
+	}
+
+	#item-container-1 {
+		margin-left: 4rem;
+	}
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+	#toggle-container {
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity .3s, visibility .1s .3s;
+	}
+
+	#carousel {
+		transform: translateX(0);
+		width: calc(100vw - 8rem);
+		transition: transform .5s ease-in-out, width .4s;
+	}
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+	#toggle-container {
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity .3s, visibility .1s .3s;
+	}
+
+	#carousel {
+		transform: translateX(0);
+		width: calc(100vw - 8rem);
+		transition: transform .5s ease-in-out, width .4s;
+	}
+}
+
+@media (min-width: 1201px) and (max-width: 1500px) {
+	#toggle-container {
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity .3s, visibility .1s .3s;
+	}
+
+	#carousel {
+		transform: translateX(0);
+		width: calc(100vw - 8rem);
+		transition: transform .5s ease-in-out, width .4s;
+	}
+}
+
+@media (min-width: 1501px) {
+	#toggle-container {
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity .3s, visibility .1s .3s;
+	}
+
+	#carousel {
+		width: calc(100vw - 25rem);
+		transform: translateX(0);
+		transition: transform .5s ease-in-out, width .4s;
+	}
+
+	#bg-circle {
+		margin-left: 6rem;
+		transition: transform 1s, margin .3s;
+	}
+}
+
+
+
+

@@ -1,0 +1,2 @@
+"C:\Program Files\MongoDB\Server\4.4\bin\mongo"
+cd C:\Users\Venter\Desktop\Personal\1 Coding\5 Web Dev\BulkBuy\main

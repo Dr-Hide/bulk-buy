@@ -1,0 +1,35 @@
+<%- include('partials/header') %>
+
+<!-- specific scripts/styles -->
+<link href="/assets/styles/login.css" rel="stylesheet">
+
+<%- include('partials/topnav') %>
+<%- include('partials/sidenav') %>
+
+	<div class="page-content">
+		<div class="login-window rounded column shadow">
+			<h2>Sign Up</h2>
+			<form class="column" action="add_user" onsubmit="return validateForm()" method="POST">
+				<h4>Name</h4>
+				<input class="rounded sorter-light" type="text" onclick="removeBorder(0)" name="name">
+				<h4>Surname</h4>
+				<input class="rounded sorter-light" type="text" onclick="removeBorder(1)" name="surname">
+				<h4>Email</h4>
+				<input class="rounded sorter-light" type="text" onclick="removeBorder(2)" name="email">
+				<h4>Username</h4>
+				<input class="rounded sorter-light" type="text" onclick="removeBorder(3)" name="username">
+				<h4>Password</h4>
+				<input class="rounded sorter-light" type="password" onclick="removeBorder(4)" name="password">
+				<h4>Confirm Password</h4>
+				<input class="rounded sorter-light" type="password" onclick="removeBorder(5)" name="passwordConfirm">
+
+				<p class="rounded">Please fill in all the fields to sign up</p>
+				<div id="button-container" class="row space-between">
+					<a href="/"><input type="button" class="rounded button-light" value="Cancel"></button></a>
+					<button class="rounded button-light">Sign Up</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	
+<%- include('partials/footer') %>
